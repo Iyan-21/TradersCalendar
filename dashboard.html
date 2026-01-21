@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Trading Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="dashboard dark">
+
+<header class="top-header">
+    <h1>📈 Trading Dashboard</h1>
+    <div class="header-actions">
+        <button id="themeToggle">🌙</button>
+        <button id="logout">Logout</button>
+    </div>
+</header>
+
+<div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <button class="nav-btn" data-section="calendar">📅 Calendar</button>
+        <button class="nav-btn" data-section="journal">📝 Journal</button>
+        <button class="nav-btn" data-section="stats">📊 Stats</button>
+        <button class="nav-btn" data-section="goals">🎯 Goals</button>
+        <button class="nav-btn" data-section="chart">📈 Chart</button>
+        <button class="nav-btn" data-section="upload">📷 Screenshots</button>
+        <button class="nav-btn" data-section="risk">🧮 Risk</button>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+        <section id="calendar" class="section">
+            <div class="top-bar">
+                <button id="prevMonth">⬅</button>
+                <h2 id="monthYear"></h2>
+                <button id="nextMonth">➡</button>
+            </div>
+
+            <!-- Weekday labels -->
+            <div class="calendar weekdays">
+                <div>Sun</div><div>Mon</div><div>Tue</div>
+                <div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+            </div>
+
+            <!-- Calendar grid -->
+            <div class="calendar" id="calendarGrid"></div>
+        </section>
+
+        <section id="journal" class="section">
+            <h3 id="selectedDate">Select a date</h3>
+            <textarea id="notes" placeholder="Trade plan / Notes..."></textarea>
+            <input type="number" id="pnl" placeholder="Daily PnL" />
+            <button id="saveBtn">Save</button>
+        </section>
+
+        <section id="stats" class="section">
+            <h3>📊 Performance Stats</h3>
+            <p>Total PnL: <span id="totalPnL">0</span></p>
+            <p>Win Rate: <span id="winRate">0%</span></p>
+            <p>Best Day: <span id="bestDay">0</span></p>
+            <p>Worst Day: <span id="worstDay">0</span></p>
+        </section>
+
+        <section id="goals" class="section">
+            <h3>🎯 Yearly Goal</h3>
+            <input id="goalInput" type="number" placeholder="Enter profit target" />
+            <button id="saveGoal">Save Goal</button>
+            <div class="progress-bar"><div id="progress"></div></div>
+        </section>
+
+        <section id="chart" class="section">
+            <h3>📈 Profit Curve</h3>
+            <canvas id="pnlChart" width="400" height="200"></canvas>
+        </section>
+
+        <section id="upload" class="section">
+            <h3>📷 Trade Screenshot</h3>
+            <input type="file" id="imageUpload" />
+            <img id="preview" />
+        </section>
+
+        <section id="risk" class="section">
+            <h3>🧮 Risk Calculator</h3>
+            <input id="balance" type="number" placeholder="Account Balance" />
+            <input id="riskPercent" type="number" placeholder="Risk %" />
+            <input id="stopLoss" type="number" placeholder="Stop Loss (pips)" />
+            <button id="calcRisk">Calculate Lot Size</button>
+            <p id="lotResult"></p>
+        </section>
+
+    </main>
+</div>
+
+<script type="module" src="firebase.js"></script>
+<script type="module" src="script.js"></script>
+</body>
+
+</html>
